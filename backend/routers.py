@@ -33,7 +33,19 @@ def register(req_user: schemas.UserRegisterRequest, db: Session = Depends(get_db
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Password and Confirm Password do not match",
         )
+    try:
+        create_user(req_user, db)
+    except IntegrityError:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Email or Mobile already registered",
+        )
+    return schemas.UserRegisterResponse(
+        status="success", message="User registered successfully"
+    )
 
+
+def create_user(req_user: schemas.UserRegisterRequest, db: Session):
     hashed_password = pwd_context.hash(req_user.password)
     user = models.User(
         fullname=req_user.fullname,
@@ -46,15 +58,9 @@ def register(req_user: schemas.UserRegisterRequest, db: Session = Depends(get_db
         db.add(user)
         db.commit()
         db.refresh(user)
-    except IntegrityError:
+    except Exception as e:
         db.rollback()
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Email or Mobile already registered",
-        )
-    return schemas.UserRegisterResponse(
-        status="success", message="User registered successfully"
-    )
+        raise e
 
 
 @router.post("/login", response_model=schemas.UserLoginResponse)

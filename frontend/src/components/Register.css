@@ -1,0 +1,136 @@
+  .register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(${backgroundImage});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    background-color: white;
+  }
+
+  .register-form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+
+  .register-button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+  }
+
+  .terms {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    font-size: 0.9em;
+  }
+
+  .terms input {
+    margin-right: 5px;
+  }
+
+
+  .registration-link {
+    display: block;
+    width: 100px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .registration-link:hover {
+    background-color: #0056b3;
+  }
+
+
+
+  .try-again-button:hover {
+    background-color: #f57b55;
+  }
+
+  .registration-message {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 1.5em;
+    color: rgb(13, 11, 11);
+  }
+
+  .try-again-button {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 2em;
+    color: white;
+    background-color: #f57b55;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .login-link {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .login-link a {
+    color: #007BFF;
+    text-decoration: none;
+  }
+
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+  .centered-title {
+    text-align: center;
+  }
+
+
+  .login-button:hover {
+    background-color: #f57b55;
+  }
+
+  .success-message {
+    margin-bottom: 5px;
+  }
+
+  .login-button {
+    display: inline-block;
+    position: absolute;
+    top: 22%;
+    left: 47%;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #f57b55;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+  }

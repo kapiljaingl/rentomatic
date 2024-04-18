@@ -31,8 +31,11 @@ CREATE DATABASE rentomatic;
 \c rentomatic;
 
 ## FrontEnd
+<<<<<<< HEAD
 npx create-react-app frontend
 export NODE_OPTIONS=--openssl-legacy-provider
 
 
 npm install @material-ui/core
+=======
+>>>>>>> bcd8ed9 (Updated)

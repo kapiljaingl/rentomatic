@@ -92,7 +92,7 @@ class BookingBase(ReservationBase):
     status: str
     total: float
 
-    class Config:
+    class ConfigDict:
         from_attributes = True
 
 
