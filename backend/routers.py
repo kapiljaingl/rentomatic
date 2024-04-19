@@ -88,6 +88,16 @@ def get_users(db: Session = Depends(get_db)):
     return users
 
 
+@router.get("/users/{user_id}", response_model=schemas.UserResponse)
+def get_user(user_id: int, db: Session = Depends(get_db)):
+    user = db.query(models.User).filter(models.Car.id == user_id).first()
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="User not found"
+        )
+    return user
+
+
 @router.post("/cars", response_model=schemas.CarResponse)
 def create_car(
     model: str = Form(),

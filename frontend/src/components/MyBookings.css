@@ -1,0 +1,27 @@
+.my-bookings {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .my-bookings h2 {
+    text-align: center;
+    color: #333;
+  }
+
+  .booking {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .booking h3 {
+    margin: 0;
+    color: #333;
+  }
+
+  .booking p {
+    margin: 10px 0;
+    color: #666;
+  }

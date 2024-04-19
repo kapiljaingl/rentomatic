@@ -1,0 +1,25 @@
+/* CarDetail.css */
+
+.car-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .car-image {
+    max-width: 500px;
+    margin-right: 20px;
+  }
+
+  .car-info {
+    max-width: 500px;
+  }
+
+  .car-info h1 {
+    margin-bottom: 10px;
+  }
+
+  .car-info p {
+    margin-bottom: 5px;
+  }

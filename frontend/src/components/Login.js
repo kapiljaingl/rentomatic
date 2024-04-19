@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import backgroundImage from './images/background.jpg';
 import './Login.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import UserContext from './UserContext';
 
 
 
@@ -11,6 +12,8 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
+
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -19,6 +22,7 @@ function Login() {
         console.log(res.data);
         // handle successful login here
         if (res.data.status === 'success') {
+          setUser(res.data.data);
           console.log('Login successful');
           navigate('/cars'); // redirect to the cars page
           return;
