@@ -52,6 +52,7 @@ const Cars = () => {
               <h3>{car.model}</h3>
               <p>{car.brand}</p>
               <p>${car.price_per_hour}</p>
+              <p>{car.availability}</p>
               <Link to={`/cars/${car.id}`} className="button">View Details</Link>
               <button onClick={() => { setReservation({ ...reservation, carId: car.id }); setShowModal(true); }}>Reserve</button>
             </div>
@@ -61,10 +62,17 @@ const Cars = () => {
             <div className="dialog-content">
               <h2>Reservation</h2>
             <button className="close-button" onClick={() => setShowModal(false)}>X</button>
-<input type="datetime-local" onChange={e => handleDateChange(e.target.value, 'pickup_date')} />
-<input type="datetime-local" onChange={e => handleDateChange(e.target.value, 'return_date')} />
-<input type="number" value={reservation.passengers} onChange={e => setReservation({ ...reservation, passengers: parseInt(e.target.value) })} />              <div className="button-container">
-                <button onClick={() => handleReservation(reservation.carId, user.id)}>Book</button>
+                <input type="datetime-local" onChange={e => handleDateChange(e.target.value, 'pickup_date')} />
+                <input type="datetime-local" onChange={e => handleDateChange(e.target.value, 'return_date')} />
+                <input type="number" value={reservation.passengers} onChange={e => setReservation({ ...reservation, passengers: parseInt(e.target.value) })} />              <div className="button-container">
+                <button onClick={() => {
+                  if (user) {
+                    handleReservation(reservation.carId, user.id)
+                  } else {
+                    // Handle the case where user is null or undefined
+                    console.error('User is not defined');
+                  }
+                }}>Book</button>
                 <button onClick={() => setShowModal(false)}>Close</button>
               </div>
             </div>

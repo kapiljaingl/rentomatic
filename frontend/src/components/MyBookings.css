@@ -1,27 +1,37 @@
+
+
+
+
+
 .my-bookings {
-    width: 60%;
-    margin: 0 auto;
-    padding: 20px;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
 
-  .my-bookings h2 {
-    text-align: center;
-    color: #333;
-  }
+.booking {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.1);
+  flex: 1 0;
+}
 
-  .booking {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
+.booking img {
+  width: 70%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
 
-  .booking h3 {
-    margin: 0;
-    color: #333;
-  }
+.booking h3 {
+  margin: 10px 0;
+}
 
-  .booking p {
-    margin: 10px 0;
-    color: #666;
-  }
+.booking p {
+  margin: 5px 0;
+}

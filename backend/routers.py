@@ -223,15 +223,29 @@ def get_booking(booking_id: int, db: Session = Depends(get_db)):
     return schemas.BookingResponse(status="success", data={"car": [booking_data]})
 
 
+def to_dict(model_instance):
+    return {
+        c.name: getattr(model_instance, c.name)
+        for c in model_instance.__table__.columns
+    }
+
+
 @router.get("/my-bookings", response_model=schemas.BookingResponse)
 def get_bookings(user_id: str, db: Session = Depends(get_db)):
     reservations = (
         db.query(models.Reservation).filter(models.Reservation.user_id == user_id).all()
     )
-    # assuming BookingBase is a Pydantic model that represents a Booking
-    booking_data = [
-        schemas.BookingBase.model_validate(reservation) for reservation in reservations
-    ]
+    booking_data = []
+    for reservation in reservations:
+        car = db.query(models.Car).get(reservation.car_id)
+        reservation_dict = to_dict(reservation)
+        car_dict = to_dict(car)
+        booking = {
+            **reservation_dict,
+            "model": car_dict["model"],
+            "thumbnail": car_dict["thumbnail"],
+        }
+        booking_data.append(schemas.ExtendedBookingBase(**booking))
     return schemas.BookingResponse(status="success", data={"cars": booking_data})
 
 
@@ -244,6 +258,7 @@ def cancel_booking(
         .filter(models.Reservation.booking_id == req_cancel_booking.booking_id)
         .first()
     )
+
     if not reservation:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Reservation not found"

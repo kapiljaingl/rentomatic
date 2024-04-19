@@ -100,9 +100,18 @@ class BookingRequest(BaseModel):
     user_email: EmailStr
 
 
+class CarInfo(BaseModel):
+    model: str
+    thumbnail: str
+
+
+class ExtendedBookingBase(BookingBase, CarInfo):
+    pass
+
+
 class BookingResponse(BaseModel):
     status: str
-    data: Dict[str, List[BookingBase]]
+    data: Dict[str, List[ExtendedBookingBase]]
 
 
 # Cancel Booking Request Schema
