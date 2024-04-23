@@ -30,12 +30,12 @@
 }
 
 .car-card .button {
-  background-color: #007bff;
+  background-color: #f57b55;
   color: white;
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 5px;
-  margin-top: 10px;
+  margin: 10px 5px; /* Add horizontal margin */
   display: inline-block;
 }
 
@@ -97,4 +97,27 @@
   border: none;
   font-size: 20px;
   cursor: pointer;
+}
+
+
+.car-card h3 {
+  color: #333;
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+.car-card p {
+  color: #333;
+  margin-bottom: 0.5em;
+}
+
+.car-card p.price {
+  color: #333;
+  font-weight: bold;
+}
+
+.car-card p.availability {
+  color: #333;
+  font-weight: bold;
 }

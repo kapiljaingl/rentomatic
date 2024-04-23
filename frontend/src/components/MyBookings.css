@@ -35,3 +35,13 @@
 .booking p {
   margin: 5px 0;
 }
+
+.button {
+  background-color: #f57b55;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 10px 5px; /* Add horizontal margin */
+  display: inline-block;
+}

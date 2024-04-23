@@ -51,10 +51,12 @@ const Cars = () => {
               <img src={car.thumbnail} alt={car.model} />
               <h3>{car.model}</h3>
               <p>{car.brand}</p>
-              <p>${car.price_per_hour}</p>
-              <p>{car.availability}</p>
+              <p className="price">₹{car.price_per_hour}/Hour</p>
+              <p className="availability">{car.availability}</p>
+              <div className="button-container">
               <Link to={`/cars/${car.id}`} className="button">View Details</Link>
-              <button onClick={() => { setReservation({ ...reservation, carId: car.id }); setShowModal(true); }}>Reserve</button>
+              <button className="button" onClick={() => { setReservation({ ...reservation, carId: car.id }); setShowModal(true); }}>Book Now</button>
+              </div>
             </div>
           ))}
         {showModal && reservation.carId && (
@@ -64,8 +66,9 @@ const Cars = () => {
             <button className="close-button" onClick={() => setShowModal(false)}>X</button>
                 <input type="datetime-local" onChange={e => handleDateChange(e.target.value, 'pickup_date')} />
                 <input type="datetime-local" onChange={e => handleDateChange(e.target.value, 'return_date')} />
-                <input type="number" value={reservation.passengers} onChange={e => setReservation({ ...reservation, passengers: parseInt(e.target.value) })} />              <div className="button-container">
-                <button onClick={() => {
+                <input type="number" value={reservation.passengers} onChange={e => setReservation({ ...reservation, passengers: parseInt(e.target.value) })} />
+                <div className="button-container">
+                <button className="button" onClick={() => {
                   if (user) {
                     handleReservation(reservation.carId, user.id)
                   } else {
@@ -73,7 +76,7 @@ const Cars = () => {
                     console.error('User is not defined');
                   }
                 }}>Book</button>
-                <button onClick={() => setShowModal(false)}>Close</button>
+                <button className="button" onClick={() => setShowModal(false)}>Close</button>
               </div>
             </div>
           </div>
